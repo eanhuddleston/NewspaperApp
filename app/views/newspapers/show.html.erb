@@ -1,0 +1,22 @@
+<h1><%= @newspaper.title %></h1>
+
+Newspaper editor:
+<%= @newspaper.editor %>
+<br>
+<br>
+Subscription plans:
+<% @newspaper.subscription_plans.each do |plan| %>
+  <br>
+  <br>
+  Title:
+  <br>
+  <%= plan.title %>
+  <br>
+  Price:
+  <br>
+  <%= plan.price %>
+  <br>
+  Delivery frequency:
+  <br>
+  <%= plan.daily ? "daily" : "weekly" %>
+<% end %>

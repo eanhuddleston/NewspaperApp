@@ -1,0 +1,29 @@
+<%= form_for(@newspaper) do |f| %>
+  <%= f.label :title, "Title:" %>
+  <%= f.text_field :title %>
+  <br>
+  <%= f.label :editor, "Editor:" %>
+  <%= f.text_field :editor %>
+  <br>
+  <br>
+  Optionally, enter subscription plans for paper:
+  <%= f.fields_for(:subscription_plans) do |pf| %>
+    <br>
+    <%= pf.label :title, "Title:" %>
+    <%= pf.text_field :title %>
+    <br>
+    <%= pf.label :price, "Price:" %>
+    <%= pf.text_field :price %>
+    <br>
+    Delivery frequency:
+    <br>
+    <%= pf.radio_button :daily, true %> daily
+    <br>
+    <%= pf.radio_button :daily, false %> weekly
+    <%= pf.hidden_field :newspaper_id %>
+    <br>
+  <% end %>
+  <br>
+  <br>
+  <%= f.submit %>
+<% end %>

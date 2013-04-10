@@ -1,0 +1,18 @@
+<%= form_for(@subscription_plan) do |f| %>
+  <%= f.label :title, "Title:" %>
+  <%= f.text_field :title %>
+  <br>
+  <%= f.label :price, "Price:" %>
+  <%= f.text_field :price %>
+  <br>
+  <br>
+  Delivery frequency:
+  <br>
+  <%= f.radio_button :daily, true %> daily
+  <br>
+  <%= f.radio_button :daily, false %> weekly
+  <%= f.hidden_field :newspaper_id %>
+  <br>
+  <br>
+  <%= f.submit %>
+<% end %>

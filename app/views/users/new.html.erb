@@ -1,0 +1,21 @@
+<h1>Sign up</h1>
+<br>
+<%= form_for(@user) do |f| %>
+  <%= f.label :name, "Name:" %>
+  <%= f.text_field :name %>
+  <br>
+  <% SubscriptionPlan.all.each do |plan| %>
+    <%=
+      check_box_tag(
+        "user[subscription_plan_ids][]",
+        plan.id,
+        @user.subscription_ids.include?(plan.id)
+      )
+    %>
+    <%= "#{plan.newspaper.title} (#{plan.title})" %>
+    <br>    
+  <% end %>
+  <%= hidden_field_tag "user[subscription_plan_ids][]" %>
+  <br>
+  <%= f.submit %>
+<% end %>
