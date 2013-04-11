@@ -4,18 +4,21 @@
   <%= f.label :name, "Name:" %>
   <%= f.text_field :name %>
   <br>
-  <% SubscriptionPlan.all.each do |plan| %>
-    <%=
-      check_box_tag(
-        "user[subscription_plan_ids][]",
-        plan.id,
-        @user.subscription_ids.include?(plan.id)
-      )
-    %>
-    <%= "#{plan.newspaper.title} (#{plan.title})" %>
-    <br>    
+  <br>
+
+  <% Newspaper.all.each do |paper| %>
+    <%= paper.title %>
+    <br>
+    <select name="user[subscription_plan_ids][]">
+      <br>
+      <option value="">Select plan</option>
+      <% paper.subscription_plans.each do |plan| %>
+        <option value="<%=plan.id%>"><%=plan.title%></option>
+      <% end %>
+    </select>
+    <br>
+    <br>
   <% end %>
   <%= hidden_field_tag "user[subscription_plan_ids][]" %>
-  <br>
   <%= f.submit %>
 <% end %>

@@ -1,0 +1,15 @@
+<h1><%= @user.name %>'s subscriptions:</h1>
+
+<% @user.subscription_plans.each_with_index do |plan, i| %>
+  <%= "Subscription #{i+1}:" %>
+  <br>
+  <%= plan.newspaper.title %>
+  <br>
+  <%= plan.daily ? "daily" : "weekly" %>
+  <br>
+  <%= plan.title %>
+  <br>
+  <%= plan.price %>
+  <br>
+  <br>
+<% end %>
